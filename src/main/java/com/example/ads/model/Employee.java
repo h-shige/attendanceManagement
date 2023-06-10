@@ -6,14 +6,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginUser {
+public class Employee {
 
     private Long id;
 
-    private String userName;
+    private String code;
+
+    private String name;
 
     private String password;
 
-    private String authorityName;
+    private String authorityCode;
 
 }

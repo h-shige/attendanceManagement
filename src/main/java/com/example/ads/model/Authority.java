@@ -9,5 +9,7 @@ public class Authority {
 
     private long id;
 
+    private String Code;
+
     private  String name;
 }
