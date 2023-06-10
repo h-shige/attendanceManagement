@@ -59,18 +59,45 @@
       <div class="row">
         <div class="col">
 
-          <div class="card shadow">
+          <div class="card shadow h-100">
             <div class="card-header">
               <h6 class="text-navy my-2 text-center">
                 <span class="text-black" th:text="${user.employeeName}"></span>さん  打刻ページ
               </h6>
             </div>
-            <div class="card-body">
+            <div class="card-body h-100">
               <h2 class="text-center pt-5">
                 <span id="realDate"></span>
               </h2>
               <div class="display-1 text-center pt-5">
                 <span id="realtime"></span>
+              </div>
+              
+              <div class="container pt-5">
+                <div class="row">
+                  <div class="col text-end">
+                    <form method="post" th:object="${user}">
+                      <input type="hidden" th:field="*{employeeId}">
+                      <input type="hidden" th:field="*{employeeCode}">
+                      <input type="hidden" th:field="*{employeeName}">
+                      <input type="hidden" th:field="*{authorityName}">
+                      <button type="submit" class="btn btn-outline-primary w-50 py-3" style="font-size: 24px;">
+                        出　勤
+                      </button>
+                    </form>
+                  </div>
+                  <div class="col text-start">
+                    <form method="post" th:object="${user}">
+                      <input type="hidden" th:field="*{employeeId}">
+                      <input type="hidden" th:field="*{employeeCode}">
+                      <input type="hidden" th:field="*{employeeName}">
+                      <input type="hidden" th:field="*{authorityName}">
+                      <button type="submit" class="btn btn-outline-danger w-50 py-3" style="font-size: 24px;">
+                        退　勤
+                      </button>
+                    </form>
+                  </div>
+                </div>
               </div>
               
               

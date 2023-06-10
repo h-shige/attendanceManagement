@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
 @Controller
-public class SecurityController {
+public class LoginController {
 
     private final EmployeeInnerJoinAuthorityMapper mapper;
 
@@ -23,7 +23,6 @@ public class SecurityController {
     public String showList(Authentication loginUser, Model model){
         String employeeCode = loginUser.getName();
         EmployeeInnerJoinAuthority user = mapper.selectByEmployeeCode(employeeCode);
-        System.out.println(user.toString());
         model.addAttribute("user", user);
         return "time-card";
     }
