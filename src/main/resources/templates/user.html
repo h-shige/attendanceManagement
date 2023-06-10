@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8" th:remove="tag">
+  
+  <script>
+    const twoDigit = (num) => {
+      let ret;
+      if( num < 10 )
+        ret = "0" + num;
+      else
+        ret = num;
+      return ret;
+    }
+    const showClock = () => {
+      const nowTime = new Date();
+      const nowHour = twoDigit(nowTime.getHours());
+      const nowMin  = twoDigit(nowTime.getMinutes());
+      const nowSec  = twoDigit(nowTime.getSeconds());
+      const timeMsg = nowHour + ":" + nowMin + ":" + nowSec;
+      document.getElementById("realtime").innerHTML = timeMsg;
+    }
+    const showDate = () => {
+      const date = new Date();
+      const year = twoDigit(date.getFullYear());
+      const month = twoDigit(date.getMonth() + 1);
+      const day = twoDigit(date.getDate());
+      const weekday = getWeekdayName(date.getDay());
+      const dateMsg = year + "年" + month + "月" + day + "日" + weekday;
+      document.getElementById("realDate").innerHTML = dateMsg;
+    }
+    
+    const getWeekdayName = (weekday) => {
+      const weekdays = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
+      return weekdays[weekday];
+    }
+   
+    setInterval('showClock()',1000);
+    setInterval('showDate()',1000);
+  </script>
+</head>
+<body>
+
+  <!-- サイドバーの表示 -->
+  <div layout:fragment="sidebar"
+    th:replace="~{fragments/sidebar :: sidebar}">
+  </div>
+
+  <!-- コンテンツの表示 -->
+  <main layout:fragment="content"
+    class="offcanvas-outside bg-light">
+    <div class="container-fluid">
+      <!-- トグルボタン -->
+      <div th:replace="~{fragments/sidebar :: toggler}">
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+          <div class="card shadow">
+            <div class="card-header">
+              <h6 class="text-navy my-2 text-center">
+                <span class="text-black" th:text="${userName}"></span>さん  打刻ページ
+              </h6>
+            </div>
+            <div class="card-body">
+              <h2 class="text-center pt-5">
+                <span id="realDate"></span>
+              </h2>
+              <div class="display-1 text-center pt-5">
+                <span id="realtime"></span>
+              </div>
+              
+              <div class="pt-5">
+              
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
