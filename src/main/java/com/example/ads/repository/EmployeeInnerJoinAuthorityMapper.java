@@ -7,7 +7,7 @@ import java.util.Optional;
 
 @Mapper
 public interface EmployeeInnerJoinAuthorityMapper {
-    Optional<EmployeeInnerJoinAuthority> selectByEmployeeName(String employeeName);
+    EmployeeInnerJoinAuthority selectByEmployeeName(String employeeName);
 
-    Optional<EmployeeInnerJoinAuthority> selectByEmployeeCode(String employeeCode);
+    EmployeeInnerJoinAuthority selectByEmployeeCode(String employeeCode);
 }

@@ -21,8 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * 従業員コードでログイン認証
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        EmployeeInnerJoinAuthority loginUser = mapper.selectByEmployeeCode(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+        EmployeeInnerJoinAuthority loginUser = mapper.selectByEmployeeCode(username);
         System.out.println(loginUser.toString());
         User user = new User(loginUser.getEmployeeCode(), loginUser.getPassword(),
                 AuthorityUtils.createAuthorityList(loginUser.getAuthorityName()));
