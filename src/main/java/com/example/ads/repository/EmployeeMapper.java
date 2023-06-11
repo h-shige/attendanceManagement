@@ -7,5 +7,5 @@ import java.util.Optional;
 
 @Mapper
 public interface EmployeeMapper {
-    Optional<Employee> selectByCode(String code);
+    Employee selectByCode(String code);
 }

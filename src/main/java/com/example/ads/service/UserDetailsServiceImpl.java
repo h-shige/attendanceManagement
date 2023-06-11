@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final EmployeeInnerJoinAuthorityMapper mapper;
+    private final EmployeeInnerJoinAuthorityService service;
 
     @Override
     /**
      * 従業員コードでログイン認証
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        EmployeeInnerJoinAuthority loginUser = mapper.selectByEmployeeCode(username);
+        EmployeeInnerJoinAuthority loginUser = service.selectByEmployeeCode(username);
         System.out.println(loginUser.toString());
         User user = new User(loginUser.getEmployeeCode(), loginUser.getPassword(),
                 AuthorityUtils.createAuthorityList(loginUser.getAuthorityName()));

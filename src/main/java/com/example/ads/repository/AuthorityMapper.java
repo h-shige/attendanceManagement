@@ -8,5 +8,5 @@ import java.util.Optional;
 @Mapper
 public interface AuthorityMapper {
 
-    Optional<Authority> selectByCode(String code);
+    Authority selectByCode(String code);
 }
