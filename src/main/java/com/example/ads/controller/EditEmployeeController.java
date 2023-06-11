@@ -23,6 +23,7 @@ public class EditEmployeeController {
     private final PasswordEncoder passwordEncoder;
 
     private final EmployeeInnerJoinAuthorityService employeeInnerJoinAuthorityService;
+
     private final EmployeeInnerJoinAuthority user;
 
     @GetMapping("/edit-employee-form/{code}")
@@ -40,5 +41,11 @@ public class EditEmployeeController {
         user.setData(employeeInnerJoinAuthorityService.selectByEmployeeCode(editUser.getCode()));
         model.addAttribute("user", user);
         return "edit-employee-complete";
+    }
+
+    @PostMapping("/time-card")
+    public String timeCard(Model model) {
+        model.addAttribute("user", user);
+        return "time-card";
     }
 }
