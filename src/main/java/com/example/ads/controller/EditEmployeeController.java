@@ -1,6 +1,6 @@
 package com.example.ads.controller;
 
-import com.example.ads.service.EmployeeInnerJoinAuthorityService;
+import com.example.ads.model.EmployeeInnerJoinAuthority;
 import com.example.ads.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class EditEmployeeController {
 
-    private final EmployeeInnerJoinAuthorityService employeeInnerJoinAuthorityService;
     private final EmployeeService employeeService;
+
+    private final EmployeeInnerJoinAuthority user;
 
     @GetMapping("/edit-employee-form/{code}")
     public String editEmployee(@PathVariable String code, Model model) {
-        model.addAttribute("user",
-                employeeInnerJoinAuthorityService.selectByEmployeeCode(code));
+        model.addAttribute("user", user);
         model.addAttribute("editUser", employeeService.selectByCode(code));
         return "edit-employee-form";
     }

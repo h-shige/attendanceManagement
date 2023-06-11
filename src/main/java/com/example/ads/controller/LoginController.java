@@ -1,7 +1,6 @@
 package com.example.ads.controller;
 
 import com.example.ads.model.EmployeeInnerJoinAuthority;
-import com.example.ads.repository.EmployeeInnerJoinAuthorityMapper;
 import com.example.ads.service.EmployeeInnerJoinAuthorityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -15,6 +14,8 @@ public class LoginController {
 
     private final EmployeeInnerJoinAuthorityService service;
 
+    private final EmployeeInnerJoinAuthority user;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -23,7 +24,7 @@ public class LoginController {
     @GetMapping("/")
     public String showList(Authentication loginUser, Model model){
         String employeeCode = loginUser.getName();
-        EmployeeInnerJoinAuthority user = service.selectByEmployeeCode(employeeCode);
+        user.setData(service.selectByEmployeeCode(employeeCode));
         model.addAttribute("user", user);
         return "time-card";
     }
