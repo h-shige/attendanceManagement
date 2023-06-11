@@ -21,7 +21,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         EmployeeInnerJoinAuthority loginUser = service.selectByEmployeeCode(username);
-        System.out.println(loginUser.toString());
         User user = new User(loginUser.getEmployeeCode(), loginUser.getPassword(),
                 AuthorityUtils.createAuthorityList(loginUser.getAuthorityName()));
         return user;

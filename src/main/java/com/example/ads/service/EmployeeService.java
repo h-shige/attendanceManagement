@@ -14,4 +14,8 @@ public class EmployeeService {
     public Employee selectByCode(String code) {
         return mapper.selectByCode(code);
     }
+
+    public int updateByCode(Employee employee) {
+        return mapper.updateByCode(employee);
+    }
 }
