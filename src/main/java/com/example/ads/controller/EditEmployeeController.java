@@ -1,7 +1,7 @@
 package com.example.ads.controller;
 
-import com.example.ads.model.Employee;
-import com.example.ads.model.EmployeeInnerJoinAuthority;
+import com.example.ads.model.entity.Employee;
+import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
 import com.example.ads.service.EmployeeInnerJoinAuthorityService;
 import com.example.ads.service.EmployeeService;
 import lombok.RequiredArgsConstructor;

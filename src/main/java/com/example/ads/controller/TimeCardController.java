@@ -1,7 +1,7 @@
 package com.example.ads.controller;
 
-import com.example.ads.model.EmployeeInnerJoinAuthority;
-import com.example.ads.model.TimeCard;
+import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
+import com.example.ads.model.entity.TimeCard;
 import com.example.ads.service.TimeCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

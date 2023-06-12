@@ -1,6 +1,6 @@
 package com.example.ads.controller;
 
-import com.example.ads.model.EmployeeInnerJoinAuthority;
+import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
 import com.example.ads.service.EmployeeInnerJoinAuthorityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

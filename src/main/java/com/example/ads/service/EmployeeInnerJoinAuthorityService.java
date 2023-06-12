@@ -1,6 +1,6 @@
 package com.example.ads.service;
 
-import com.example.ads.model.EmployeeInnerJoinAuthority;
+import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
 import com.example.ads.repository.EmployeeInnerJoinAuthorityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

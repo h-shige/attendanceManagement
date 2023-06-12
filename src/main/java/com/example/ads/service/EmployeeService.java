@@ -1,6 +1,6 @@
 package com.example.ads.service;
 
-import com.example.ads.model.Employee;
+import com.example.ads.model.entity.Employee;
 import com.example.ads.repository.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

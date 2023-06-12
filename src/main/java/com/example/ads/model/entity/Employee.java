@@ -1,4 +1,4 @@
-package com.example.ads.model;
+package com.example.ads.model.entity;
 
 
 import lombok.Getter;

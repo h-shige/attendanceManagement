@@ -1,6 +1,6 @@
 package com.example.ads.repository;
 
-import com.example.ads.model.Authority;
+import com.example.ads.model.entity.Authority;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

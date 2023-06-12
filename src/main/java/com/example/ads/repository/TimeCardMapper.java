@@ -1,7 +1,7 @@
 package com.example.ads.repository;
 
-import com.example.ads.model.EmployeeInnerJoinAuthority;
-import com.example.ads.model.TimeCard;
+import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
+import com.example.ads.model.entity.TimeCard;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.time.LocalDate;
