@@ -5,13 +5,11 @@ import com.example.ads.model.EmployeeInnerJoinAuthority;
 import com.example.ads.service.EmployeeInnerJoinAuthorityService;
 import com.example.ads.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,10 +24,10 @@ public class EditEmployeeController {
 
     private final EmployeeInnerJoinAuthority user;
 
-    @GetMapping("/edit-employee-form/{code}")
-    public String editEmployee(@PathVariable String code, Model model) {
+    @GetMapping("/edit-employee-form")
+    public String editEmployee(Model model) {
         model.addAttribute("user", user);
-        model.addAttribute("editUser", employeeService.selectByCode(code));
+        model.addAttribute("editUser", employeeService.selectByCode(user.getEmployeeCode()));
         return "edit-employee-form";
     }
 

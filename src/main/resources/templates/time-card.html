@@ -76,26 +76,14 @@
               <div class="container pt-5">
                 <div class="row">
                   <div class="col text-end">
-                    <form method="post" th:object="${user}">
-                      <input type="hidden" th:field="*{employeeId}">
-                      <input type="hidden" th:field="*{employeeCode}">
-                      <input type="hidden" th:field="*{employeeName}">
-                      <input type="hidden" th:field="*{authorityName}">
-                      <button type="submit" class="btn btn-outline-primary w-50 py-3" style="font-size: 24px;">
-                        出　勤
-                      </button>
-                    </form>
+                    <a th:href="@{/attendance}" class="btn btn-outline-primary w-50 py-3" style="font-size: 24px;">
+                      出　勤
+                    </a>
                   </div>
                   <div class="col text-start">
-                    <form method="post" th:object="${user}">
-                      <input type="hidden" th:field="*{employeeId}">
-                      <input type="hidden" th:field="*{employeeCode}">
-                      <input type="hidden" th:field="*{employeeName}">
-                      <input type="hidden" th:field="*{authorityName}">
-                      <button type="submit" class="btn btn-outline-danger w-50 py-3" style="font-size: 24px;">
-                        退　勤
-                      </button>
-                    </form>
+                    <a th:href="@{/leaving}" class="btn btn-outline-primary w-50 py-3" style="font-size: 24px;">
+                      退　勤
+                    </a>
                   </div>
                 </div>
               </div>
