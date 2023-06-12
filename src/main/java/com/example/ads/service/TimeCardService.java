@@ -14,14 +14,14 @@ public class TimeCardService {
 
     private final TimeCardMapper mapper;
 
-    public TimeCard selectByWorkingDate(LocalDate workingDate, EmployeeInnerJoinAuthority user){
-        return mapper.selectByWorkingDate(workingDate, user);
+    public TimeCard selectByEmployeeCodeAndIsLeavingFalse(EmployeeInnerJoinAuthority user){
+        return mapper.selectByEmployeeCodeAndIsLeavingFalse(user);
     }
     public int insert(TimeCard timeCard) {
         return mapper.insert(timeCard);
     }
 
-    public int updateByEmployeeCodeAndWorkingDate(TimeCard timeCard) {
-        return mapper.updateByEmployeeCodeAndWorkingDate(timeCard);
+    public int updateByEmployeeCodeAndIsLeavingFalse(TimeCard timeCard) {
+        return mapper.updateByEmployeeCodeAndIsLeavingFalse(timeCard);
     }
 }

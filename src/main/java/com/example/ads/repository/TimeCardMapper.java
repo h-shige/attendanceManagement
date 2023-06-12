@@ -9,10 +9,10 @@ import java.time.LocalDate;
 @Mapper
 public interface TimeCardMapper {
 
-    TimeCard selectByWorkingDate(LocalDate workingDate, EmployeeInnerJoinAuthority user);
+    TimeCard selectByEmployeeCodeAndIsLeavingFalse(EmployeeInnerJoinAuthority user);
 
     int insert(TimeCard timeCard);
 
-    int updateByEmployeeCodeAndWorkingDate(TimeCard timeCard);
+    int updateByEmployeeCodeAndIsLeavingFalse(TimeCard timeCard);
 
 }

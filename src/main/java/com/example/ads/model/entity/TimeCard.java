@@ -13,13 +13,14 @@ public class TimeCard {
 
     private Long id;
 
-    private LocalDate workingDate;
-
     private LocalDateTime attendance;
 
     private LocalDateTime leaving;
 
     private LocalTime workingHours;
 
+    private Boolean isLeaving;
+
     private String EmployeeCode;
+
 }

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -23,11 +22,10 @@ public class TimeCardController {
 
     @GetMapping("/attendance")
     public String attendance(Model model) {
+        LocalDateTime now = LocalDateTime.now();
         TimeCard timeCard = new TimeCard();
-        timeCard.setWorkingDate(LocalDate.now());
-        timeCard.setAttendance(LocalDateTime.now());
+        timeCard.setAttendance(now);
         timeCard.setEmployeeCode(user.getEmployeeCode());
-        System.out.println(timeCard.getAttendance());
         service.insert(timeCard);
         model.addAttribute("user", user);
         return "attendance-complete";
@@ -35,11 +33,12 @@ public class TimeCardController {
 
     @GetMapping("/leaving")
     public String leaving(Model model) {
-        TimeCard timeCard = service.selectByWorkingDate(LocalDate.now(), user);
+        TimeCard timeCard = service.selectByEmployeeCodeAndIsLeavingFalse(user);
         timeCard.setLeaving(LocalDateTime.now());
-        long workingTime = Duration.between(timeCard.getAttendance(), timeCard.getLeaving()).getSeconds();
+        Long workingTime = Duration.between(timeCard.getAttendance(), timeCard.getLeaving()).getSeconds();
         timeCard.setWorkingHours(LocalTime.ofSecondOfDay(workingTime));
-        service.updateByEmployeeCodeAndWorkingDate(timeCard);
+        timeCard.setIsLeaving(true);
+        service.updateByEmployeeCodeAndIsLeavingFalse(timeCard);
         model.addAttribute("user", user);
         return "leaving-complete";
     }
