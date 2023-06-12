@@ -1,9 +1,11 @@
 package com.example.ads.model.dto;
 
 import com.example.ads.model.entity.TimeCard;
+import lombok.Getter;
 
 import java.time.format.DateTimeFormatter;
 
+@Getter
 public class TimeCardDTO {
 
     public TimeCardDTO(TimeCard timeCard) throws IllegalAccessException {
