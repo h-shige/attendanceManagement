@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ads.repository.TimeCardMapper">
+
+  <select id="selectByWorkingDate" resultType="TimeCard">
+    SELECT * FROM time_card
+    WHERE working_date = #{workingDate}
+    AND employee_code = #{user.employeeCode}
+  </select>
+
+  <insert id="insert">
+    INSERT INTO time_card(
+      working_date,
+      attendance,
+      leaving,
+      working_hours,
+      employee_code
+    ) values (
+      #{workingDate},
+      #{attendance},
+      #{leaving},
+      #{workingHours},
+      #{employeeCode}
+    )
+  </insert>
+
+  <update id="updateByEmployeeCodeAndWorkingDate">
+    UPDATE time_card SET
+      leaving = #{leaving},
+      working_hours = #{workingHours}
+    WHERE employee_code = #{EmployeeCode}
+    AND employee_code = #{employeeCode}
+  </update>
+
+
+</mapper>

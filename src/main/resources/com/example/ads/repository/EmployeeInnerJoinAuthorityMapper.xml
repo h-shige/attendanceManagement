@@ -10,7 +10,7 @@
       authority.name as authority_name
     FROM employee INNER JOIN authority
     ON employee.authority_code  = authority.code
-    WHERE employee.name = #{employeeName};
+    WHERE employee.name = #{employeeName}
   </select>
 
   <select id="selectByEmployeeCode" resultType="EmployeeInnerJoinAuthority">
@@ -22,6 +22,6 @@
     authority.name as authority_name
     FROM employee INNER JOIN authority
     ON employee.authority_code  = authority.code
-    WHERE employee.code = #{employeeCode};
+    WHERE employee.code = #{employeeCode}
   </select>
 </mapper>
