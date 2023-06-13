@@ -17,9 +17,13 @@
   <insert id="insert">
     INSERT INTO time_card(
       attendance,
+      attendance_year,
+      attendance_month,
       employee_code
     ) values (
       #{attendance},
+      #{attendanceYear},
+      #{attendanceMonth},
       #{employeeCode}
     )
   </insert>
@@ -32,6 +36,5 @@
     WHERE employee_code = #{employeeCode}
     AND is_leaving = false
   </update>
-
 
 </mapper>
