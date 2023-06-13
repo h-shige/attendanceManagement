@@ -3,6 +3,7 @@ package com.example.ads.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -31,5 +32,20 @@ public class TimeCard {
         if (this.employeeCode == null) return true;
         if (this.employeeCode.isEmpty()) return true;
         return false;
+    }
+
+    public TimeCard attendance(EmployeeInnerJoinAuthority user) {
+        LocalDateTime now = LocalDateTime.now();
+        this.setAttendance(now);
+        this.setEmployeeCode(user.getEmployeeCode());
+        return this;
+    }
+
+    public TimeCard leaving(){
+        this.setLeaving(LocalDateTime.now());
+        Long workingTime = Duration.between(this.getAttendance(), this.getLeaving()).getSeconds();
+        this.setWorkingHours(LocalTime.ofSecondOfDay(workingTime));
+        this.setIsLeaving(true);
+        return this;
     }
 }
