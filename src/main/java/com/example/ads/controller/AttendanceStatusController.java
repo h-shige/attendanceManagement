@@ -13,16 +13,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-
-
+/**
+ * 勤怠状況コントローラー
+ */
 @Controller
 @RequiredArgsConstructor
 public class AttendanceStatusController {
 
+    /** 従業員テーブルと権限テーブルの結合テーブル */
     private final EmployeeInnerJoinAuthority user;
 
+    /** タイムカードサービス */
     private final TimeCardService service;
 
+    /**
+     * 閲覧する勤怠状況の年月の選択ページに遷移するメソッド
+     */
     @GetMapping("/attendance-status-selection")
     public String attendanceStatusConfirmation(Model model) {
         List<TimeCard> timeCardList = service.selectAttendanceYearAndMonthList();
@@ -31,6 +37,11 @@ public class AttendanceStatusController {
         return "attendance-status-selection";
     }
 
+    /**
+     * 選択した勤怠状況の年月のページに遷移するメソッド
+     * @param attendanceYear 出勤年
+     * @param attendanceMonth 出勤月
+     */
     @GetMapping("/attendance-status-confirmation/{attendanceYear}/{attendanceMonth}")
     public String attendanceStatusConfirmation(@PathVariable int attendanceYear,
                                                @PathVariable int attendanceMonth,
@@ -42,6 +53,5 @@ public class AttendanceStatusController {
         model.addAttribute("user", user);
         return "attendance-status-confirmation";
     }
-
 
 }

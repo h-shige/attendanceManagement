@@ -8,19 +8,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * ログインコントローラー
+ */
 @RequiredArgsConstructor
 @Controller
 public class LoginController {
 
+    /** 従業員テーブルと権限テーブルの結合テーブルサービス */
     private final EmployeeInnerJoinAuthorityService service;
 
+    /** 従業員テーブルと権限テーブルを結合したクラス */
     private final EmployeeInnerJoinAuthority user;
 
+    /**
+     * ログイン画面に遷移するメソッド
+     */
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    /**
+     * ログイン認証を経てトップページの打刻画面に遷移するメソッド
+     * @param loginUser ログイン認証したユーザー
+     */
     @GetMapping("/")
     public String showList(Authentication loginUser, Model model){
         String employeeCode = loginUser.getName();
@@ -28,4 +40,5 @@ public class LoginController {
         model.addAttribute("user", user);
         return "time-card";
     }
+
 }
