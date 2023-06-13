@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +17,10 @@ public class TimeCardService {
 
     public TimeCard selectByEmployeeCodeAndIsLeavingFalse(EmployeeInnerJoinAuthority user){
         return mapper.selectByEmployeeCodeAndIsLeavingFalse(user);
+    }
+
+    public List<TimeCard> selectByEmployeeCode(EmployeeInnerJoinAuthority user){
+        return mapper.selectByEmployeeCode(user);
     }
     public int insert(TimeCard timeCard) {
         return mapper.insert(timeCard);

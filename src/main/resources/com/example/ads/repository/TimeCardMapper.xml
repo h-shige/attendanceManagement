@@ -8,6 +8,12 @@
     AND is_leaving = false
   </select>
 
+  <select id="selectByEmployeeCode" resultType="TimeCard">
+    SELECT * FROM time_card
+    WHERE employee_code = #{employeeCode}
+    AND is_leaving = true
+  </select>
+
   <insert id="insert">
     INSERT INTO time_card(
       attendance,
