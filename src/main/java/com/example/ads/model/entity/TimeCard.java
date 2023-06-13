@@ -16,9 +16,9 @@ public class TimeCard {
 
     private LocalDateTime attendance;
 
-    private String attendanceYear;
+    private int attendanceYear;
 
-    private String attendanceMonth;
+    private int attendanceMonth;
 
     private LocalDateTime leaving;
 
@@ -31,10 +31,9 @@ public class TimeCard {
     public boolean hasNullField(){
         if (this.id == null) return true;
         if (this.attendance == null) return true;
-        if (this.attendanceYear == null) return true;
-        if (this.attendanceYear.isEmpty()) return true;
-        if (this.attendanceMonth == null) return true;
-        if (this.attendanceMonth.isEmpty()) return true;
+        if (this.attendanceYear < 0) return true;
+        if (this.attendanceMonth < 0) return true;
+        if (this.attendanceMonth > 12) return true;
         if (this.leaving == null) return true;
         if (this.workingHours == null) return true;
         if (this.isLeaving == null) return true;
@@ -48,8 +47,8 @@ public class TimeCard {
         this.setAttendance(now);
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String[] attendanceDate = now.toLocalDate().format(dateFormatter).split("/");
-        this.attendanceYear = attendanceDate[0];
-        this.attendanceMonth = attendanceDate[1];
+        this.attendanceYear = Integer.parseInt(attendanceDate[0]);
+        this.attendanceMonth = Integer.parseInt(attendanceDate[1]);
         this.setEmployeeCode(user.getEmployeeCode());
         return this;
     }

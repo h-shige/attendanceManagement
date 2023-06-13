@@ -14,6 +14,22 @@
     AND is_leaving = true
   </select>
 
+  <select id="selectByEmployeeCodeAndDate" resultType="TimeCard">
+    SELECT * FROM time_card
+    WHERE employee_code = #{user.employeeCode}
+    AND attendance_year = #{attendanceYear}
+    AND attendance_month = #{attendanceMonth}
+    AND is_leaving = true
+  </select>
+
+  <select id="selectAttendanceYearAndMonthList" resultType="TimeCard">
+    SELECT
+      DISTINCT attendance_year, attendance_month
+    FROM
+      time_card
+    ORDER BY attendance_year DESC, attendance_month DESC
+  </select>
+
   <insert id="insert">
     INSERT INTO time_card(
       attendance,

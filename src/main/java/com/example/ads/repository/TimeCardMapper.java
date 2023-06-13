@@ -14,6 +14,12 @@ public interface TimeCardMapper {
 
     List<TimeCard> selectByEmployeeCode(EmployeeInnerJoinAuthority user);
 
+    List<TimeCard> selectAttendanceYearAndMonthList();
+
+    List<TimeCard> selectByEmployeeCodeAndDate(int attendanceYear,
+                                               int attendanceMonth,
+                                               EmployeeInnerJoinAuthority user);
+
     int insert(TimeCard timeCard);
 
     int updateByEmployeeCodeAndIsLeavingFalse(TimeCard timeCard);

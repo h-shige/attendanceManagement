@@ -22,6 +22,17 @@ public class TimeCardService {
     public List<TimeCard> selectByEmployeeCode(EmployeeInnerJoinAuthority user){
         return mapper.selectByEmployeeCode(user);
     }
+
+    public List<TimeCard> selectAttendanceYearAndMonthList() {
+        return mapper.selectAttendanceYearAndMonthList();
+    }
+
+    public List<TimeCard> selectByEmployeeCodeAndDate(int attendanceYear,
+                                               int attendanceMonth,
+                                               EmployeeInnerJoinAuthority user) {
+        return mapper.selectByEmployeeCodeAndDate(attendanceYear, attendanceMonth, user);
+    }
+
     public int insert(TimeCard timeCard) {
         return mapper.insert(timeCard);
     }

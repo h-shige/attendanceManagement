@@ -25,7 +25,7 @@
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h6 class="text-navy my-2 text-center">
-                            <span class="text-black" th:text="${user.employeeName}"></span>さん  勤怠状況
+                            <span class="text-black" th:text="${user.employeeName}"></span>さん  選択画面
                         </h6>
                     </div>
                     <div class="card-body table-responsive">
@@ -33,19 +33,16 @@
                             <thead>
                             <tr>
                                 <th>出勤日</th>
-                                <th>出勤時刻</th>
-                                <th>退勤日</th>
-                                <th>退勤時刻</th>
-                                <th>勤務時間</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="timeCard : ${timeCardList}" th:object="${timeCard}">
-                                <td th:text="*{attendanceDate}"></td>
-                                <td th:text="*{attendanceTime}"></td>
-                                <td th:text="*{leavingDate}"></td>
-                                <td th:text="*{leavingTime}"></td>
-                                <td th:text="*{workingHours}"></td>
+                                <td>
+                                    <a th:href="@{/attendance-status-confirmation/{attendanceYear}/{attendanceMonth}(attendanceYear=*{attendanceYear}, attendanceMonth=*{attendanceMonth})}">
+                                        <span th:text="*{attendanceYear}"></span>年
+                                        <span th:text="*{attendanceMonth}"></span>月
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
