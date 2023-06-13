@@ -24,7 +24,7 @@ public class LoginController {
     @GetMapping("/")
     public String showList(Authentication loginUser, Model model){
         String employeeCode = loginUser.getName();
-        user.setData(service.selectByEmployeeCode(employeeCode));
+        user.setField(service.selectByEmployeeCode(employeeCode));
         model.addAttribute("user", user);
         return "time-card";
     }

@@ -36,7 +36,7 @@ public class EditEmployeeController {
                                Model model) {
         editUser.setPassword(passwordEncoder.encode(editUser.getPassword()));
         employeeService.updateByCode(editUser);
-        user.setData(employeeInnerJoinAuthorityService.selectByEmployeeCode(editUser.getCode()));
+        user.setField(employeeInnerJoinAuthorityService.selectByEmployeeCode(editUser.getCode()));
         model.addAttribute("user", user);
         return "edit-employee-complete";
     }

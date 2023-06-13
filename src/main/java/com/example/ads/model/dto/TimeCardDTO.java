@@ -7,13 +7,13 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * タイムカードDTO
- * 勤怠状況を画面に表示する際に都合の良いフィールドを保持している
+ * 勤怠状況を画面に表示する際に都合の良いフィールドを保持するクラス
  */
 @Getter
 public class TimeCardDTO {
 
     /**
-     *
+     * コンストラクタ
      * @param timeCard タイムカードのエンティティ、全てのフィールドが代入されているもの以外受け付けない。
      * @throws IllegalAccessException 引数が不正であった場合にスローされる
      */
