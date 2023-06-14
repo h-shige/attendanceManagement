@@ -15,6 +15,10 @@ public class EmployeeService {
         return mapper.selectByCode(code);
     }
 
+    public int insert(Employee employee) {
+        return mapper.insert(employee);
+    }
+
     public int updateByCode(Employee employee) {
         return mapper.updateByCode(employee);
     }

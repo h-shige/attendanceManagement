@@ -17,6 +17,14 @@ public interface EmployeeMapper {
     Employee selectByCode(String code);
 
     /**
+     * 引数で指定した従業員インスタンスを従業員テーブルに登録する
+     * IDは自動採番され権限コードは02(USER)で固定である
+     * @param employee 登録する従業員インスタンス
+     * @return
+     */
+    int insert(Employee employee);
+
+    /**
      * 引数で指定した従業員クラスが持つ従業員コードと同じ従業員コードを持つ
      * レコードの内容を更新するメソッド
      * @param employee 更新をかける従業員クラスのインスタンス

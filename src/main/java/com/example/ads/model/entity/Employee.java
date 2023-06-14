@@ -34,8 +34,6 @@ public class Employee {
     private String password;
 
     /** 権限コード */
-    @NotBlank
-    @Size(max = 8)
     private String authorityCode;
 
 }

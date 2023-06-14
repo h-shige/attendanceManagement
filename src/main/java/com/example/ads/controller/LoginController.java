@@ -34,7 +34,7 @@ public class LoginController {
      * @param loginUser ログイン認証したユーザー
      */
     @GetMapping("/")
-    public String showList(Authentication loginUser, Model model){
+    public String home(Authentication loginUser, Model model){
         String employeeCode = loginUser.getName();
         user.setField(service.selectByEmployeeCode(employeeCode));
         model.addAttribute("user", user);

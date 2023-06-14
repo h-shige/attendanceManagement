@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+
+  <!-- サイドバー -->
+  <div layout:fragment="sidebar"
+    th:replace="~{fragments/sidebar :: sidebar}">
+  </div>
+
+  <!-- コンテンツ -->
+  <main layout:fragment="content"
+    class="offcanvas-outside bg-light">
+    <div class="container-fluid">
+  
+      <!-- トグルボタン -->
+      <div th:replace="~{fragments/sidebar :: toggler}">
+      </div>
+
+      <div class="row">
+        <div class="col">
+          
+          <div class="card shadow h-100">
+            <div class="card-header">
+              <h6 class="text-navy my-2 text-center">
+                  新規従業員登録
+              </h6>
+            </div>
+            <div class="card-body h-100">
+              <form th:action="@{/admin/create-employee-confirmation}" th:object="${newEmployee}" method="post" novalidate>
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                  <label for="code">従業員コード:</label>
+                  <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{code}">
+                  <div class="invalid-feedback" th:errors="*{code}"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="name">名前:</label>
+                  <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{name}">
+                  <div class="invalid-feedback" th:errors="*{name}"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="password">パスワード:</label>
+                  <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{password}">
+                  <div class="invalid-feedback" th:errors="*{password}"></div>
+                </div>
+                <input type="hidden" th:field="*{authorityCode}">
+                <div class="mb-3 text-center">
+                  <button class="btn btn-outline-primary px-5">
+                    確認
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+</body>
+</html>

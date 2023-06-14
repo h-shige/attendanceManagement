@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8" th:remove="tag">
+</head>
+<body>
+
+<!-- サイドバー -->
+<div layout:fragment="sidebar"
+     th:replace="~{fragments/sidebar :: sidebar}">
+</div>
+
+<!-- コンテンツ -->
+<main layout:fragment="content"
+      class="offcanvas-outside bg-light">
+    <div class="container-fluid">
+        
+        <!-- トグルボタン -->
+        <div th:replace="~{fragments/sidebar :: toggler}">
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                
+                <div class="card shadow h-100">
+                    <div class="card-header">
+                        <h6 class="text-navy my-2 text-center">
+                            新規従業員登録情報確認
+                        </h6>
+                    </div>
+                    <div class="card-body h-100">
+                        <form th:action="@{/admin/create-employee-complete}" th:object="${newEmployee}" method="post" novalidate>
+                            <input type="hidden" th:field="*{id}">
+                            <div class="mb-3">
+                                <label for="code">従業員コード:</label>
+                                <input type="text" class="form-control" th:field="*{code}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">名前:</label>
+                                <input type="text" class="form-control" th:field="*{name}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">パスワード:</label>
+                                <input type="text" class="form-control"  th:field="*{password}" readonly>
+                            </div>
+                            <input type="hidden" th:field="*{authorityCode}">
+                            <div class="mb-3 text-center">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-outline-primary px-5">
+                                                登録
+                                            </button>
+                                        </div>
+                                        <div class="col">
+                                            <a th:href="@{/admin/create-employee-form}" class="btn btn-outline-danger px-5">
+                                                修正する
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</main>
+
+</body>
+</html>

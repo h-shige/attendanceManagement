@@ -7,6 +7,20 @@
     WHERE code = #{code}
   </select>
 
+  <insert id="insert">
+    INSERT INTO employee(
+      code,
+      name,
+      password,
+      authority_code
+    ) values (
+      #{code},
+      #{name},
+      #{password},
+      '02'
+    )
+  </insert>
+
   <update id="updateByCode">
     UPDATE employee
     SET

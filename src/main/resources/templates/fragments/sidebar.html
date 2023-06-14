@@ -7,7 +7,8 @@ sidebar.htmlのコードは
 -->
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
 </head>
@@ -64,6 +65,12 @@ sidebar.htmlのコードは
               <a th:href="@{/attendance-status-selection}" class="nav-link text-white">
                 <i class="bi bi-calendar-check-fill me-2"></i>
                 勤怠状況確認
+              </a>
+            </li>
+            <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+              <a th:href="@{/admin/create-employee-form}" class="nav-link text-white">
+                <i class="bi bi-table me-2"></i>
+                新規従業員登録
               </a>
             </li>
           </ul>
