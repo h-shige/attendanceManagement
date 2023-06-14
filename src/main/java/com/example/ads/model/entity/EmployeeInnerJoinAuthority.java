@@ -2,7 +2,6 @@ package com.example.ads.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -11,7 +10,6 @@ import org.springframework.web.context.annotation.SessionScope;
  */
 @Getter
 @Setter
-@ToString
 @SessionScope
 @Component
 public class EmployeeInnerJoinAuthority {
