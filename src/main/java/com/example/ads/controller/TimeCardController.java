@@ -36,9 +36,10 @@ public class TimeCardController {
      */
     @GetMapping("/attendance")
     public String attendance(Model model) {
+        model.addAttribute("user", user);
+        if (service.selectByEmployeeCodeAndIsLeavingFalse(user) != null) return "attendance-error";
         TimeCard timeCard = new TimeCard().attendance(user);
         service.insert(timeCard);
-        model.addAttribute("user", user);
         return "attendance-complete";
     }
 
@@ -47,9 +48,10 @@ public class TimeCardController {
      */
     @GetMapping("/leaving")
     public String leaving(Model model) {
+        model.addAttribute("user", user);
+        if (service.selectByEmployeeCodeAndIsLeavingFalse(user) == null) return "leaving-error";
         TimeCard timeCard = service.selectByEmployeeCodeAndIsLeavingFalse(user).leaving();
         service.updateByEmployeeCodeAndIsLeavingFalse(timeCard);
-        model.addAttribute("user", user);
         return "leaving-complete";
     }
 
