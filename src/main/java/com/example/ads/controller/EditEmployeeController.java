@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +36,7 @@ public class EditEmployeeController {
     /**
      * 従業員情報編集フォームに遷移するメソッド
      */
-    @GetMapping("/edit-employee-form")
+    @GetMapping("/edit-employee")
     public String editEmployee(Model model) {
         model.addAttribute("user", user);
         model.addAttribute("editUser", employeeService.selectByCode(user.getEmployeeCode()));
@@ -42,16 +44,21 @@ public class EditEmployeeController {
     }
 
     /**
-     * 従業員情報の更新をして、完了画面へ遷移するクラス
+     * 従業員情報の更新をして、完了画面へ遷移するメソッド
      * @param editUser 新しい従業員情報を保持した従業員クラス
      */
     @PostMapping("/edit-employee-complete")
-    public String editEmployee(@ModelAttribute Employee editUser,
-                               Model model) {
+    public String editEmployee(@Validated Employee editUser,
+                               BindingResult result, Model model) {
+        model.addAttribute("user", user);
+        if (result.hasErrors()) {
+            model.addAttribute("editUser", editUser);
+            return "edit-employee-form";
+        }
         editUser.setPassword(passwordEncoder.encode(editUser.getPassword()));
         employeeService.updateByCode(editUser);
         user.setField(employeeInnerJoinAuthorityService.selectByEmployeeCode(editUser.getCode()));
-        model.addAttribute("user", user);
+
         return "edit-employee-complete";
     }
 
