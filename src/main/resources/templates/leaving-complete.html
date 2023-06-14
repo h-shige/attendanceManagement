@@ -29,12 +29,22 @@
                 <span class="text-black" th:text="${user.employeeName}"></span>さん  退勤打刻完了
               </h6>
             </div>
-            <div class="card-body h-100">
-              <h5>
-                <span th:text="${user.employeeName}"></span>さん<br>
-                本日もお疲れ様でした。
-              </h5>
-              
+            <div class="card-body h-100 text-center">
+              <div class="pt-5">
+                <h5>
+                  <span th:text="${user.employeeName}"></span>さん<br>
+                </h5>
+              </div>
+              <div class="pt-5">
+                <h5>
+                  今日も1日お疲れ様でした。
+                </h5>
+              </div>
+              <div class="pt-5">
+                <a th:href="@{/logout}" class="btn btn-primary text-white px-5 ">
+                  ログアウト
+                </a>
+              </div>
             </div>
           </div>
 
