@@ -7,14 +7,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * タイムカードクラスからタイムカードDTOに変換するクラス
+ */
 public class TimeCardConvertToTimeCardDTO {
 
+    /** タイムカードクラスのリスト */
     private final List<TimeCard> timeCardList;
 
+    /**
+     * コンストラクタ
+     * @param timeCardList タイムカードクラスのリスト
+     */
     public TimeCardConvertToTimeCardDTO(List<TimeCard> timeCardList){
         this.timeCardList = timeCardList;
     }
 
+    /**
+     * タイムカードリストからタイムカードDTOリストを作成するメソッド
+     * @return 作成した不変のタイムカードDTOリスト
+     */
     public List<TimeCardDTO> createTimeCardDTOList(){
         List<TimeCardDTO> timeCardDTOList = new ArrayList<>();
         this.timeCardList.stream().forEach(timeCard -> {

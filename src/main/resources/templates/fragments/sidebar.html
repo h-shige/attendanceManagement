@@ -1,3 +1,11 @@
+
+<!--
+sidebar.htmlのコードは
+書籍　Spring Boot2入門:基礎から実演まで
+著者　原田けいと、竹田甘地、Robert Segawa
+のspring-security2を参考に作成している。
+-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -13,6 +21,8 @@
       tabindex="-1"
       id="offcanvasScrolling"
       aria-labelledby="offcanvasScrollingLabel">
+      
+      <!-- ナビゲーションリンク -->
       <nav class="navbar-dark bg-primary text-white h-100">
 
         <div class="offcanvas-header">
@@ -28,6 +38,7 @@
           </h4>
         </div>
 
+        <!-- リンク -->
         <div class="offcanvas-body pt-0">
           <hr class="mt-1">
           <ul class="navbar-nav">
@@ -58,7 +69,7 @@
           </ul>
 
           <hr>
-          <!-- 閉じるボタン(画面が小さい時に表示) -->
+          <!-- 閉じるボタン -->
           <div class="text-center d-lg-none">
             <button type="button" class="btn-circle btn-light"
               data-bs-dismiss="offcanvas" aria-label="Close">
@@ -70,7 +81,7 @@
     </div>
   </div>
 
-  <!-- サイドバー折りたたみ時のトグルボタン -->
+  <!-- トグルボタン -->
   <div th:fragment="toggler">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">

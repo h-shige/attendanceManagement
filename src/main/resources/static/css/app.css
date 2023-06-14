@@ -1,5 +1,11 @@
-/* Color */
+/*
+app.cssのコードは
+書籍　Spring Boot2入門:基礎から実演まで
+著者　原田けいと、竹田甘地、Robert Segawa
+のspring-security2を参考に作成している。
+*/
 
+/* 色 */
 .text-navy {
   color: #224abe;
 }
@@ -14,7 +20,7 @@
   background-color: #0d47a1;
 }
 
-/* Off-Canvas (SideBar) */
+/* サイドバー */
 .offcanvas {
   width: 200px !important;
 }
@@ -39,17 +45,17 @@
   border: 0;
 }
 
-/* Link */
+/* リンク */
 a {
   text-decoration: none;
 }
 
-/* Size */
+/* サイズ */
 .mh-100 {
   height: calc(100vh - 56px)
 }
 
-/* Table */
+/* テーブル */
 .table > :not(:first-child) {
     border-top: 0;
 }

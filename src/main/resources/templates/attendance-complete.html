@@ -7,12 +7,12 @@
 </head>
 <body>
 
-  <!-- サイドバーの表示 -->
+  <!-- サイドバー -->
   <div layout:fragment="sidebar"
     th:replace="~{fragments/sidebar :: sidebar}">
   </div>
 
-  <!-- コンテンツの表示 -->
+  <!-- コンテンツ -->
   <main layout:fragment="content"
     class="offcanvas-outside bg-light">
     <div class="container-fluid">
@@ -34,13 +34,13 @@
                 <span th:text="${user.employeeName}"></span>さん<br>
                 今日も1日頑張りましょう。
               </h5>
-              
             </div>
           </div>
 
         </div>
       </div>
     </div>
+    
   </main>
 
 </body>

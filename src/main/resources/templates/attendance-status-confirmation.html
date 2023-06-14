@@ -7,12 +7,12 @@
 </head>
 <body>
 
-<!-- サイドバーの表示 -->
+<!-- サイドバー -->
 <div layout:fragment="sidebar"
      th:replace="~{fragments/sidebar :: sidebar}">
 </div>
 
-<!-- コンテンツの表示 -->
+<!-- コンテンツ -->
 <main layout:fragment="content"
       class="offcanvas-outside bg-light">
     <div class="container-fluid">
@@ -22,6 +22,7 @@
         
         <div class="row">
             <div class="col">
+                
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h6 class="text-navy my-2 text-center">
@@ -54,6 +55,7 @@
             
             </div>
         </div>
+        
     </div>
 </main>
 

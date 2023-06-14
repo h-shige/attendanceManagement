@@ -31,7 +31,7 @@ public class AttendanceStatusController {
      */
     @GetMapping("/attendance-status-selection")
     public String attendanceStatusConfirmation(Model model) {
-        List<TimeCard> timeCardList = service.selectAttendanceYearAndMonthList();
+        List<TimeCard> timeCardList = service.selectAttendanceYearAndMonthList(user);
         model.addAttribute("user", user);
         model.addAttribute("timeCardList", timeCardList);
         return "attendance-status-selection";

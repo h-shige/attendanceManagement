@@ -27,6 +27,7 @@
       DISTINCT attendance_year, attendance_month
     FROM
       time_card
+    WHERE employee_code = #{employeeCode}
     ORDER BY attendance_year DESC, attendance_month DESC
   </select>
 

@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" th:remove="tag">
   
+  <!-- リアルタイムの日時を画面表示するためのコード -->
   <script>
     const twoDigit = (num) => {
       let ret;
@@ -43,12 +44,12 @@
 </head>
 <body>
 
-  <!-- サイドバーの表示 -->
+  <!-- サイドバー -->
   <div layout:fragment="sidebar"
     th:replace="~{fragments/sidebar :: sidebar}">
   </div>
 
-  <!-- コンテンツの表示 -->
+  <!-- コンテンツ -->
   <main layout:fragment="content"
     class="offcanvas-outside bg-light">
     <div class="container-fluid">
@@ -66,9 +67,12 @@
               </h6>
             </div>
             <div class="card-body h-100">
+              
+              <!-- 年月日曜日の表示 -->
               <h2 class="text-center pt-5">
                 <span id="realDate"></span>
               </h2>
+              <!-- 時刻の表示 -->
               <div class="display-1 text-center pt-5">
                 <span id="realtime"></span>
               </div>
