@@ -26,25 +26,28 @@
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h6 class="text-navy my-2 text-center">
-                            従業員一覧
+                            <span class="text-black" th:text="${user.employeeName}"></span>さん<br>
+                            <span class="text-black" th:text="${showedUser.employeeName}"></span>さんの勤怠状況確認
                         </h6>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>従業員名</th>
-                                <th>権限名</th>
+                                <th>出勤日</th>
+                                <th>出勤時刻</th>
+                                <th>退勤日</th>
+                                <th>退勤時刻</th>
+                                <th>勤務時間</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="employee : ${employeeList}" th:object="${employee}">
-                                <td>
-                                    <a th:href="@{/admin/attendance-status-selection/{employeeCode}(employeeCode=*{employeeCode})}">
-                                        <span th:text="*{employeeName}"></span>
-                                    </a>
-                                </td>
-                                <td th:text="*{authorityName}"></td>
+                            <tr th:each="timeCard : ${timeCardList}" th:object="${timeCard}">
+                                <td th:text="*{attendanceDate}"></td>
+                                <td th:text="*{attendanceTime}"></td>
+                                <td th:text="*{leavingDate}"></td>
+                                <td th:text="*{leavingTime}"></td>
+                                <td th:text="*{workingHours}"></td>
                             </tr>
                             </tbody>
                         </table>

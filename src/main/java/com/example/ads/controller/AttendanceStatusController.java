@@ -4,6 +4,7 @@ import com.example.ads.model.dto.TimeCardDTO;
 import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
 import com.example.ads.model.entity.TimeCard;
 import com.example.ads.model.utility.TimeCardConvertToTimeCardDTO;
+import com.example.ads.service.EmployeeInnerJoinAuthorityService;
 import com.example.ads.service.TimeCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,17 +25,32 @@ public class AttendanceStatusController {
     private final EmployeeInnerJoinAuthority user;
 
     /** タイムカードサービス */
-    private final TimeCardService service;
+    private final TimeCardService timeCardService;
+
+    private final EmployeeInnerJoinAuthorityService employeeInnerJoinAuthorityService;
 
     /**
      * 閲覧する勤怠状況の年月の選択ページに遷移するメソッド
      */
     @GetMapping("/attendance-status-selection")
     public String attendanceStatusConfirmation(Model model) {
-        List<TimeCard> timeCardList = service.selectAttendanceYearAndMonthList(user);
+        List<TimeCard> timeCardList = timeCardService.selectAttendanceYearAndMonthList(user);
         model.addAttribute("user", user);
         model.addAttribute("timeCardList", timeCardList);
         return "attendance-status-selection";
+    }
+
+    @GetMapping("/admin/attendance-status-selection/{employeeCode}")
+    public String attendanceStatusConfirmationForAdmin(@PathVariable String employeeCode,
+                                                       Model model) {
+        EmployeeInnerJoinAuthority showedUser = employeeInnerJoinAuthorityService
+                .selectByEmployeeCode(employeeCode);
+        List<TimeCard> timeCardList = timeCardService
+                .selectAttendanceYearAndMonthList(showedUser);
+        model.addAttribute("user", user);
+        model.addAttribute("showedUser", showedUser);
+        model.addAttribute("timeCardList", timeCardList);
+        return "attendance-status-selection-for-admin";
     }
 
     /**
@@ -47,11 +63,27 @@ public class AttendanceStatusController {
                                                @PathVariable int attendanceMonth,
                                                Model model) {
         TimeCardConvertToTimeCardDTO converter =
-                new TimeCardConvertToTimeCardDTO(service.selectByEmployeeCodeAndDate(attendanceYear, attendanceMonth, user));
+                new TimeCardConvertToTimeCardDTO(timeCardService.selectByEmployeeCodeAndDate(attendanceYear, attendanceMonth, user));
         List<TimeCardDTO> timeCardList = converter.createTimeCardDTOList();
         model.addAttribute("timeCardList", timeCardList);
         model.addAttribute("user", user);
         return "attendance-status-confirmation";
+    }
+
+    @GetMapping("/admin/attendance-status-confirmation/{employeeCode}/{attendanceYear}/{attendanceMonth}")
+    public String attendanceStatusConfirmationForAdmin(@PathVariable String employeeCode,
+                                                       @PathVariable int attendanceYear,
+                                                       @PathVariable int attendanceMonth,
+                                                       Model model) {
+        EmployeeInnerJoinAuthority showedUser = employeeInnerJoinAuthorityService
+                .selectByEmployeeCode(employeeCode);
+        TimeCardConvertToTimeCardDTO converter =
+                new TimeCardConvertToTimeCardDTO(timeCardService.selectByEmployeeCodeAndDate(attendanceYear, attendanceMonth, showedUser));
+        List<TimeCardDTO> timeCardList = converter.createTimeCardDTOList();
+        model.addAttribute("timeCardList", timeCardList);
+        model.addAttribute("showedUser", showedUser);
+        model.addAttribute("user", user);
+        return "attendance-status-confirmation-for-admin";
     }
 
 }

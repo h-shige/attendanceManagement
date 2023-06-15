@@ -26,25 +26,25 @@
                 <div class="card shadow h-100">
                     <div class="card-header">
                         <h6 class="text-navy my-2 text-center">
-                            従業員一覧
+                            <span class="text-black" th:text="${user.employeeName}"></span>さん<br>
+                            <span class="text-black" th:text="${showedUser.employeeName}"></span>さんの勤怠年月選択画面
                         </h6>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>従業員名</th>
-                                <th>権限名</th>
+                                <th>出勤日</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="employee : ${employeeList}" th:object="${employee}">
+                            <tr th:each="timeCard : ${timeCardList}" th:object="${timeCard}">
                                 <td>
-                                    <a th:href="@{/admin/attendance-status-selection/{employeeCode}(employeeCode=*{employeeCode})}">
-                                        <span th:text="*{employeeName}"></span>
+                                    <a th:href="@{/admin/attendance-status-confirmation/{employeeCode}/{attendanceYear}/{attendanceMonth}(employeeCode=${showedUser.employeeCode}, attendanceYear=*{attendanceYear}, attendanceMonth=*{attendanceMonth})}">
+                                        <span th:text="*{attendanceYear}"></span>年
+                                        <span th:text="*{attendanceMonth}"></span>月
                                     </a>
                                 </td>
-                                <td th:text="*{authorityName}"></td>
                             </tr>
                             </tbody>
                         </table>
