@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * オーソリティマッパー
+ * (未使用)
  */
 @Mapper
 public interface AuthorityMapper {

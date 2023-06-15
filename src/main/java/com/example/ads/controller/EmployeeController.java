@@ -61,6 +61,12 @@ public class EmployeeController {
         return "edit-employee-complete";
     }
 
+    /**
+     * 新規従業員作成画面に遷移するメソッド
+     * @param newEmployee 新規従業員
+     * @param model
+     * @return
+     */
     @GetMapping("/admin/create-employee-form")
     public String createEmployee(Employee newEmployee, Model model) {
         model.addAttribute("user", user);
@@ -68,6 +74,12 @@ public class EmployeeController {
         return "create-employee-form";
     }
 
+    /**
+     * 新規従業員の登録情報確認画面に遷移するメソッド
+     * @param newEmployee 新規従業員
+     * @param result 入力チェックの結果
+     * @param model
+     */
     @PostMapping("/admin/create-employee-confirmation")
     public String createEmployeeConfirmation(@Validated Employee newEmployee,
                                              BindingResult result, Model model) {
@@ -77,6 +89,11 @@ public class EmployeeController {
         return "create-employee-confirmation";
     }
 
+    /**
+     * 新規従業員を登録し完了画面に遷移するメソッド
+     * @param newEmployee 新規従業員
+     * @param model
+     */
     @PostMapping("/admin/create-employee-complete")
     public String register(Employee newEmployee, Model model) {
         model.addAttribute("user", user);
@@ -87,6 +104,10 @@ public class EmployeeController {
         return "create-employee-complete";
     }
 
+    /**
+     * 従業員一覧画面に遷移するメソッド
+     * @param model
+     */
     @GetMapping("/admin/list")
     public String list(Model model) {
         model.addAttribute("user", user);

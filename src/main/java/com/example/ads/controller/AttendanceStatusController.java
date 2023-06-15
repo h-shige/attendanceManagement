@@ -27,6 +27,7 @@ public class AttendanceStatusController {
     /** タイムカードサービス */
     private final TimeCardService timeCardService;
 
+    /** 従業員テーブルと権限テーブルの結合テーブルのサービス */
     private final EmployeeInnerJoinAuthorityService employeeInnerJoinAuthorityService;
 
     /**
@@ -40,6 +41,9 @@ public class AttendanceStatusController {
         return "attendance-status-selection";
     }
 
+    /**
+     * 管理者が従業員を指定し、閲覧する勤怠状況の年月の選択ページに遷移するメソッド
+     */
     @GetMapping("/admin/attendance-status-selection/{employeeCode}")
     public String attendanceStatusConfirmationForAdmin(@PathVariable String employeeCode,
                                                        Model model) {
@@ -70,6 +74,12 @@ public class AttendanceStatusController {
         return "attendance-status-confirmation";
     }
 
+    /**
+     * 管理者が指定した従業員の選択した勤怠状況の年月のページに遷移するメソッド
+     * @param employeeCode 指定した従業員んお従業員コード
+     * @param attendanceYear 出勤年
+     * @param attendanceMonth 出勤月
+     */
     @GetMapping("/admin/attendance-status-confirmation/{employeeCode}/{attendanceYear}/{attendanceMonth}")
     public String attendanceStatusConfirmationForAdmin(@PathVariable String employeeCode,
                                                        @PathVariable int attendanceYear,

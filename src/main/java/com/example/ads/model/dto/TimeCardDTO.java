@@ -48,5 +48,4 @@ public class TimeCardDTO {
     /** 勤務時間 */
     private final String workingHours;
 
-
 }
