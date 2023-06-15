@@ -14,7 +14,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 public class EmployeeInnerJoinAuthority {
 
-    /** 従業員 */
+    /** 従業員ID */
     private Long employeeId;
 
     /** 従業員コード */

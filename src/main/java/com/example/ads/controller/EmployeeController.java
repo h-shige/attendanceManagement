@@ -87,4 +87,11 @@ public class EmployeeController {
         return "create-employee-complete";
     }
 
+    @GetMapping("/admin/list")
+    public String list(Model model) {
+        model.addAttribute("user", user);
+        model.addAttribute("employeeList", employeeInnerJoinAuthorityService.selectAll());
+        return "employee-list";
+    }
+
 }

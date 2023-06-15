@@ -3,11 +3,15 @@ package com.example.ads.repository;
 import com.example.ads.model.entity.EmployeeInnerJoinAuthority;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 従業員テーブルと権限テーブルを結合したクラスマッパー
  */
 @Mapper
 public interface EmployeeInnerJoinAuthorityMapper {
+
+    List<EmployeeInnerJoinAuthority> selectAll();
 
     /**
      * 従業員コードで従業員テーブルと権限テーブルを検索するメソッド

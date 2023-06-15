@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ads.repository.EmployeeInnerJoinAuthorityMapper">
+
+  <select id="selectAll" resultType="EmployeeInnerJoinAuthority">
+    SELECT
+      employee.code as employee_code,
+      employee.name as employee_name,
+      authority.name as authority_name
+    FROM employee INNER JOIN authority
+    ON employee.authority_code  = authority.code
+  </select>
+
   <select id="selectByEmployeeName" resultType="EmployeeInnerJoinAuthority">
     SELECT
       employee.id as employee_id,
