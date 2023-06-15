@@ -1,4 +1,4 @@
-# attendanceManagement
+# AttendanceManagement
 Spring Bootで作成した勤怠管理システムのポートフォリオです。
 
 画面のレイアウト、デザイン等は
