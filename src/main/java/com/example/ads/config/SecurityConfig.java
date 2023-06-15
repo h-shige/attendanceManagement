@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- *
+ * セキュリティ設定ファイル
  */
 @RequiredArgsConstructor
 @Configuration
