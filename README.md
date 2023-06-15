@@ -1,5 +1,12 @@
 # attendanceManagement
 Spring Bootで作成した勤怠管理システムのポートフォリオです。
+画面のレイアウト、デザイン等は
+
+書籍　Spring Boot2入門:基礎から実演まで
+
+著者　原田けいと、竹田甘地、Robert Segawa
+
+のspring-security2を参考に作成している。
 
 ## 使用技術
 - 開発言語
