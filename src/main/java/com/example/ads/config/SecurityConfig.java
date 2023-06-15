@@ -28,19 +28,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        String admin = "ADMIN";
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority(admin)
+                        .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/")
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .permitAll()
-                );
+                        .permitAll());
         return http.build();
     }
 }
