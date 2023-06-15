@@ -23,7 +23,48 @@
     
     <div class="row">
       <div class="col">
-        登録完了
+  
+        <div class="card shadow h-100">
+          <div class="card-header">
+            <h6 class="text-navy my-2 text-center">
+              新規従業員登録完了
+            </h6>
+          </div>
+          <div class="card-body h-100">
+            <h6 class="my-3 text-center">
+              下記の内容で新規登録しました。
+            </h6>
+            <form th:action="@{/time-card}" th:object="${newEmployee}" method="post" novalidate>
+              <div class="mb-3">
+                <label for="employeeId">従業員ID:</label>
+                <input type="text" class="form-control" th:field="*{employeeId}" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="employeeCode">従業員コード:</label>
+                <input type="text" class="form-control" th:field="*{employeeCode}" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="employeeName">名前:</label>
+                <input type="text" class="form-control" th:field="*{employeeName}" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="password">パスワード:</label>
+                <input type="password" class="form-control" placeholder="**********" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="authorityName">権限:</label>
+                <input type="text" class="form-control" th:field="*{authorityName}" readonly>
+              </div>
+              <div class="mb-3 text-center">
+                <button class="btn btn-outline-primary px-5">
+                  <i class="bi bi-clock-fill"></i>
+                  打刻画面に戻る
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
       </div>
     </div>
   
