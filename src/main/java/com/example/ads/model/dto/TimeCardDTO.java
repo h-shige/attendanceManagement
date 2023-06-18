@@ -19,7 +19,7 @@ public class TimeCardDTO {
      */
     public TimeCardDTO(TimeCard timeCard) throws IllegalAccessException {
         if (timeCard == null) throw new IllegalAccessException("引数がnullです。");
-        if (timeCard.hasNullField()) throw new IllegalAccessException("引数のインスタンスにnull、または空のフィールドがあります。");
+        if (timeCard.hasInvalidFields()) throw new IllegalAccessException("引数のインスタンスにnull、または空のフィールドがあります。");
         this.attendanceDate = timeCard.getAttendance().toLocalDate().format(dateFormatter);
         this.attendanceTime = timeCard.getAttendance().toLocalTime().format(timeFormatter);
         this.leavingDate = timeCard.getLeaving().toLocalDate().format(dateFormatter);

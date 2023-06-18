@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -47,7 +48,7 @@ public class EmployeeController {
      * @param editUser 新しい従業員情報を保持した従業員クラス
      */
     @PostMapping("/edit-employee-complete")
-    public String editEmployeeComplete(@Validated Employee editUser,
+    public String editEmployeeComplete(@Validated @ModelAttribute Employee editUser,
                                BindingResult result, Model model) {
         model.addAttribute("user", user);
         if (result.hasErrors()) {
@@ -81,7 +82,7 @@ public class EmployeeController {
      * @param model
      */
     @PostMapping("/admin/create-employee-confirmation")
-    public String createEmployeeConfirmation(@Validated Employee newEmployee,
+    public String createEmployeeConfirmation(@Validated @ModelAttribute Employee newEmployee,
                                              BindingResult result, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("newEmployee", newEmployee);
@@ -95,7 +96,7 @@ public class EmployeeController {
      * @param model
      */
     @PostMapping("/admin/create-employee-complete")
-    public String register(Employee newEmployee, Model model) {
+    public String register(@ModelAttribute Employee newEmployee, Model model) {
         model.addAttribute("user", user);
         newEmployee.setPassword(passwordEncoder.encode(newEmployee.getPassword()));
         employeeService.insert(newEmployee);

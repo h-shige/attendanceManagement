@@ -43,7 +43,7 @@ public class TimeCard {
      * nullまたは不正な値があるかどうか確認するメソッド
      * @return nullまたは不正な値がある場合true,ない場合はfalse
      */
-    public boolean hasNullField(){
+    public boolean hasInvalidFields(){
         if (this.id == null) return true;
         if (this.attendance == null) return true;
         if (this.attendanceYear < 0) return true;
