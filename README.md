@@ -1,5 +1,5 @@
 # AttendanceManagement
-Spring Bootで作成した勤怠管理システムのポートフォリオです。
+Spring Bootで作成した勤怠管理システムです。
 
 画面のレイアウト、デザイン等は
 
@@ -23,7 +23,7 @@ Spring Bootで作成した勤怠管理システムのポートフォリオです
 - view
   - Thymeleaf,HTML
   - css/Bootstrap5
--IDE 
+- IDE 
   - IntelliJ
 
 ## 機能
